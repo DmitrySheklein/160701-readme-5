@@ -17,11 +17,15 @@ import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { ChangePasswordRdo } from './rdo/change-password.rdo';
+import { FetchDataService } from '../fetch-data.service';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthenticationController {
-  constructor(private readonly authService: AuthenticationService) {}
+  constructor(
+    private readonly authService: AuthenticationService,
+    private readonly fetchService: FetchDataService
+  ) {}
 
   @ApiResponse({
     type: UserRdo,
@@ -107,5 +111,12 @@ export class AuthenticationController {
     return fillDto(ChangePasswordRdo, {
       message: 'Password changed successfully',
     });
+  }
+
+  @Get('/fetch')
+  public async getPosts() {
+    const { data } = await this.fetchService.fetch('/posts');
+
+    return data;
   }
 }
