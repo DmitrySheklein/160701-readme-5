@@ -9,7 +9,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AxiosExceptionFilter } from '../filters/axios-exception.filter';
-import { CreatePostApiDto } from '../dto/create-post.dto';
+import { CreatePostDto } from '@project/dto';
 import { CheckAuthGuard } from '../guards/check-auth.guard';
 import { UserIdInterceptor } from '../interceptors/userid.interceptor';
 import { AuthKeyName, fillDto } from '@project/shared/helpers';
@@ -40,7 +40,7 @@ export class BlogController {
   @UseGuards(CheckAuthGuard)
   @UseInterceptors(UserIdInterceptor)
   @Post('/')
-  public async create(@Body() dto: CreatePostApiDto, @Req() req: any) {
+  public async create(@Body() dto: CreatePostDto, @Req() req: any) {
     const userId = req['user']['sub'];
 
     const post = await this.apiService.blog<PostRdo>({

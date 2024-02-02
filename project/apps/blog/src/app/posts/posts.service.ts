@@ -3,8 +3,7 @@ import { PostRepository } from './repository/post.repository';
 import { PostContentService } from './post-content/post-content.service';
 import { PostStatus, PostType } from '@project/libs/shared/app/types';
 import { PostEntity } from './entities/post.entity';
-
-import { CreatePostDto } from '@project/dto';
+import { CreatePostWithAuthorDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update/update-post.dto';
 import { getCurrentContentModel } from './models/content';
 
@@ -14,7 +13,7 @@ export class PostsService {
     private readonly postRepository: PostRepository,
     private readonly basePostContentService: PostContentService
   ) {}
-  public async create(dto: CreatePostDto) {
+  public async create(dto: CreatePostWithAuthorDto) {
     const contentId = String(
       (await this.basePostContentService.save(dto.type, dto.content))?.id
     );

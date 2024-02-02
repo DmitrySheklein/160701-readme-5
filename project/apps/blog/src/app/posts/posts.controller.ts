@@ -13,8 +13,8 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { fillDto } from '@project/shared/helpers';
 import { PostTypesRdo } from './rdo/post-types.rdo';
 import { PostRdo } from './rdo/post.rdo';
-import { CreatePostDto } from '@project/dto';
 import { UpdatePostDto } from './dto/update/update-post.dto';
+import { CreatePostWithAuthorDto } from './dto/create-post.dto';
 
 @ApiTags('posts')
 @Controller('posts')
@@ -30,7 +30,7 @@ export class PostsController {
     summary: 'Создать пост',
   })
   @Post()
-  public async create(@Body() createPostDto: CreatePostDto) {
+  public async create(@Body() createPostDto: CreatePostWithAuthorDto) {
     const post = await this.postsService.create(createPostDto);
 
     return fillDto(PostRdo, post);
