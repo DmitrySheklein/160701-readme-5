@@ -11,10 +11,6 @@ import { AuthKeyName, attachSwagger } from '@project/shared/helpers';
 import { DocumentBuilder } from '@nestjs/swagger';
 import { RequestIdInterceptor } from './app/interceptors/request-id.interceptor';
 import { UserIdInterceptor } from './app/interceptors/userid.interceptor';
-import {
-  AllOptionPostContentArray,
-  AllPostContentArray,
-} from '@project/libs/shared/app/types';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
@@ -50,9 +46,6 @@ async function bootstrap() {
       ),
     swaggerCustomOptions: {
       customSiteTitle: '[BFF] Swagger UI',
-    },
-    documentOptions: {
-      extraModels: [...AllPostContentArray, ...AllOptionPostContentArray],
     },
   });
 
