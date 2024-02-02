@@ -1,5 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
 import {
+  AllPostContentArray,
   PostContent,
   PostType,
   RefPostContentArray,
@@ -10,7 +11,6 @@ import {
   ArrayMaxSize,
   IsArray,
   IsEnum,
-  IsMongoId,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -20,16 +20,8 @@ import {
   ValidateNested,
 } from 'class-validator';
 
+@ApiExtraModels(...AllPostContentArray)
 export class CreatePostDto {
-  @ApiProperty({
-    description: 'Author id',
-    example: '65b809b8d6443b043b33eedb',
-  })
-  @IsNotEmpty()
-  @IsString()
-  @IsMongoId()
-  public author!: string;
-
   @ApiProperty({
     enum: PostType,
     description: 'Post type',

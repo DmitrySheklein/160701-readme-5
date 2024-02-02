@@ -1,5 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
 import {
+  AllOptionPostContentArray,
   Post,
   PostContent,
   PostStatus,
@@ -8,6 +9,7 @@ import {
 } from '@project/libs/shared/app/types';
 import { Expose } from 'class-transformer';
 
+@ApiExtraModels(...AllOptionPostContentArray)
 export class PostRdo implements Omit<Post, 'author' | 'contentId'> {
   @Expose()
   @ApiProperty({
