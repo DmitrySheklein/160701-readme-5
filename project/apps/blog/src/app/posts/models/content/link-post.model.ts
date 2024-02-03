@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { LinkPostContent } from '@project/libs/shared/app/types';
 import { BasePostContentModel } from './base-post-content.model';
+import { PostContentValidator } from '@project/validation';
 
 @Schema({
   collection: 'link-posts-content',
@@ -23,6 +24,8 @@ export class LinkPostContentModel
 
   @Prop({
     required: true,
+    minlength: PostContentValidator.link.description.Min,
+    maxlength: PostContentValidator.link.description.Max,
   })
   public description!: string;
 }
