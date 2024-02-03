@@ -19,13 +19,15 @@ class ValidateError extends Error {
   }
 }
 
-export const configEnvValidator = (dto: Constructor<object>) => () => {
-  const config = new dto();
+export const configEnvValidator =
+  <T extends object>(dto: Constructor<T>) =>
+  (): T => {
+    const config = new dto();
 
-  const errors = validateSync(config, {});
-  if (errors.length) {
-    throw new ValidateError(config, errors);
-  }
+    const errors = validateSync(config, {});
+    if (errors.length) {
+      throw new ValidateError(config, errors);
+    }
 
-  return config;
-};
+    return config;
+  };

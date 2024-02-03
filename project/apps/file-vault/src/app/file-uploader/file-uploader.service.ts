@@ -1,6 +1,6 @@
 import 'multer';
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
 import { ensureDir } from 'fs-extra';
 import { writeFile } from 'node:fs/promises';
 import path, { join } from 'node:path';
@@ -10,6 +10,7 @@ import { extension } from 'mime-types';
 import { FileRepository } from './file.repository';
 import { FileEntity } from './file.entity';
 import { StoredFile } from '@project/libs/shared/app/types';
+import { appFileVaultConfig } from '@project/config/file-vault';
 
 @Injectable()
 export class FileUploaderService {
@@ -17,12 +18,13 @@ export class FileUploaderService {
   private readonly DATE_FORMAT = 'YYYY/MM/DD';
 
   constructor(
-    private readonly config: ConfigService,
+    @Inject(appFileVaultConfig.KEY)
+    private readonly config: ConfigType<typeof appFileVaultConfig>,
     private readonly fileRepository: FileRepository
   ) {}
 
   private getUploadDirectoryPath(): string {
-    return String(this.config.get('application.uploadDirectory'));
+    return this.config.uploadDirectory;
   }
 
   private getDestinationFilePath(filename: string): string {
@@ -67,8 +69,8 @@ export class FileUploaderService {
 
   public async writeFile(file: Express.Multer.File): Promise<StoredFile> {
     try {
-      const port = this.config.get('application.port');
-      const serveRoot = this.config.get('application.serveRoot');
+      const port = this.config.port;
+      const serveRoot = this.config.serveRoot;
       const uploadDirectoryPath = this.getUploadDirectoryPath();
       const subDirectory = this.getSubUploadDirectoryPath();
       const fileExtension = String(
