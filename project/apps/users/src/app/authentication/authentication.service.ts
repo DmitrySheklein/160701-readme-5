@@ -117,7 +117,10 @@ export class AuthenticationService {
       throw new BadRequestException(OLD_PASSWORD_NOT_CORRECT);
     }
 
-    const newUser = existUser.setPasswordHash(newPassword);
+    const passwordHash = await this.hashService.generatePasswordHash(
+      newPassword
+    );
+    const newUser = existUser.setPasswordHash(passwordHash);
 
     await this.blogUserRepository.update(id, newUser);
 
