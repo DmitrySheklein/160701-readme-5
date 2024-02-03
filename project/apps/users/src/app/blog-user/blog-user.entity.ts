@@ -8,9 +8,9 @@ export class BlogUserEntity implements AuthUser, Entity<string> {
   public role!: UserRole;
   public passwordHash!: string;
   public avatar?: string;
-  public createdAt!: Date;
-  public publicationsCount!: number;
-  public subscribersCount!: number;
+  public createdAt?: Date;
+  public publicationsCount?: number;
+  public subscribersCount?: number;
 
   constructor(user: AuthUser) {
     this.populate(user);

@@ -42,19 +42,15 @@ export class AuthenticationService {
   ) {}
 
   public async register(dto: CreateUserDto) {
-    const { email, firstname, password, avatar } = dto;
+    const { email, firstname, password, avatarId } = dto;
     const passwordHash = await this.hashService.generatePasswordHash(password);
     const blogUser: AuthUser = {
       email,
       firstname,
-      avatar,
+      avatar: avatarId,
       role: UserRole.User,
       passwordHash,
-      createdAt: new Date(),
-      publicationsCount: 0,
-      subscribersCount: 0,
     };
-
     const existUser = await this.blogUserRepository.findByEmail(email);
 
     if (existUser) {

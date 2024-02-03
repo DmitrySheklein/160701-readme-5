@@ -3,7 +3,7 @@ import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 import { AUTH_USER_EMAIL_NOT_VALID } from './authentication.constants';
 import { User } from '@project/validation';
 
-export class CreateUserDto {
+export class CreateUserBaseDto {
   @ApiProperty({
     description: 'User unique email address',
     example: 'user@user.ru',
@@ -32,14 +32,25 @@ export class CreateUserDto {
   @MaxLength(User.password.Max)
   @IsString()
   public password!: string;
+}
 
+export class CreateUserDto extends CreateUserBaseDto {
+  @ApiProperty({
+    required: false,
+    description: 'User img avatar ID',
+    example: '65a8be2bf72eba2b50420cf7',
+  })
+  public avatarId?: string;
+}
+
+export class CreateUserDtoWithAvatarFile extends CreateUserBaseDto {
   @ApiProperty({
     required: false,
     description: 'User profile picture PNG or JPG file',
     type: 'string',
     format: 'binary',
-    enum: User.avatar.Type,
-    maxLength: User.avatar.FileMaxSize,
+    enum: ['image/png', 'image/jpeg'],
+    maxLength: 100,
   })
-  public avatar?: string;
+  public avatar?: any;
 }

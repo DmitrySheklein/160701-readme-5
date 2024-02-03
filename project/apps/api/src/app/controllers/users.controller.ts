@@ -13,7 +13,6 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { AxiosExceptionFilter } from '../filters/axios-exception.filter';
-import { CreateUserDtoWithAvatarFile } from '../dto/create-user.dto';
 import {
   UploadedFileRdo,
   LoggedUserRdo,
@@ -37,7 +36,11 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import FormData from 'form-data';
 import { FileValidationPipe } from '@project/shared/core';
 
-import { ChangePasswordDto, LoginUserDto } from '@project/dto';
+import {
+  ChangePasswordDto,
+  LoginUserDto,
+  CreateUserDtoWithAvatarFile,
+} from '@project/dto';
 import { ALLOWED_IMG_MIMETYPES, User } from '@project/validation';
 
 @ApiTags('auth')
