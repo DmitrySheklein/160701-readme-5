@@ -1,7 +1,5 @@
 import { AuthUser, UserRole } from '@project/libs/shared/app/types';
 import { Entity } from '@project/shared/core';
-import { compare, genSalt, hash } from 'bcrypt';
-import { SALT_ROUNDS } from './blog-user.constant';
 
 export class BlogUserEntity implements AuthUser, Entity<string> {
   public id?: string;
@@ -32,7 +30,7 @@ export class BlogUserEntity implements AuthUser, Entity<string> {
     };
   }
 
-  public populate(data: AuthUser): void {
+  public populate(data: AuthUser): BlogUserEntity {
     this.id = data.id ?? undefined;
     this.email = data.email;
     this.firstname = data.firstname;
@@ -42,27 +40,14 @@ export class BlogUserEntity implements AuthUser, Entity<string> {
     this.publicationsCount = data.publicationsCount;
     this.subscribersCount = data.subscribersCount;
     this.passwordHash = data.passwordHash;
-  }
-
-  public async setPassword(password: string): Promise<BlogUserEntity> {
-    const salt = await genSalt(SALT_ROUNDS);
-    this.passwordHash = await hash(password, salt);
 
     return this;
   }
 
-  public async comparePassword(password: string) {
-    return compare(password, this.passwordHash);
-  }
+  public setPasswordHash(passwordHash: string): BlogUserEntity {
+    this.passwordHash = passwordHash;
 
-  public async changePassword(oldPassword: string, newPassword: string) {
-    const isPasswordEqual = await this.comparePassword(oldPassword);
-
-    if (isPasswordEqual) {
-      this.setPassword(newPassword);
-    }
-
-    return isPasswordEqual;
+    return this;
   }
 
   static fromObject(data: AuthUser): BlogUserEntity {

@@ -25,6 +25,7 @@ import {
   LoginUserDto,
   ChangePasswordDto,
 } from '@project/dto';
+import { HashService } from '../hash/hash.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -36,18 +37,19 @@ export class AuthenticationService {
     private readonly jwtAccessService: JwtService,
     @Inject(JWT_REFRESH_KEY)
     private readonly jwtRefreshService: JwtService,
-    private readonly refreshTokenService: RefreshTokenService
+    private readonly refreshTokenService: RefreshTokenService,
+    private readonly hashService: HashService
   ) {}
 
   public async register(dto: CreateUserDto) {
     const { email, firstname, password, avatar } = dto;
-
+    const passwordHash = await this.hashService.generatePasswordHash(password);
     const blogUser: AuthUser = {
       email,
       firstname,
       avatar,
       role: UserRole.User,
-      passwordHash: '',
+      passwordHash,
       createdAt: new Date(),
       publicationsCount: 0,
       subscribersCount: 0,
@@ -59,7 +61,7 @@ export class AuthenticationService {
       throw new ConflictException(AUTH_USER_EXISTS);
     }
 
-    const userEntity = await new BlogUserEntity(blogUser).setPassword(password);
+    const userEntity = new BlogUserEntity(blogUser);
 
     return this.blogUserRepository.save(userEntity);
   }
@@ -68,7 +70,16 @@ export class AuthenticationService {
     const { email, password } = dto;
     const existUser = await this.blogUserRepository.findByEmail(email);
 
-    if (!existUser || !(await existUser.comparePassword(password))) {
+    if (!existUser) {
+      throw new UnauthorizedException(AUTH_USER_NOT_FOUND_OR_PASSWORD_WRONG);
+    }
+
+    const isEqualPassword = await this.hashService.comparePassword({
+      password,
+      passwordHash: existUser.passwordHash,
+    });
+
+    if (!isEqualPassword) {
       throw new UnauthorizedException(AUTH_USER_NOT_FOUND_OR_PASSWORD_WRONG);
     }
 
@@ -101,13 +112,16 @@ export class AuthenticationService {
       throw new NotFoundException(`User with id ${id} not found`);
     }
 
-    const isOldPasswordCorrect = await existUser.comparePassword(oldPassword);
+    const isOldPasswordCorrect = await this.hashService.comparePassword({
+      password: oldPassword,
+      passwordHash: existUser.passwordHash,
+    });
 
     if (!isOldPasswordCorrect) {
       throw new BadRequestException(OLD_PASSWORD_NOT_CORRECT);
     }
 
-    const newUser = await existUser.setPassword(newPassword);
+    const newUser = existUser.setPasswordHash(newPassword);
 
     await this.blogUserRepository.update(id, newUser);
 
