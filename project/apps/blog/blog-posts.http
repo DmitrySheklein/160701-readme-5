@@ -22,7 +22,7 @@ Content-Type: {{contentType}}
   "type": "video",
   "content": {
     "title": "Мой др 33",
-    "url": "https://youtu.be/ss9uvs0ujef"
+    "url": "https://www.youtube.com/watch?v=JU79n3yU1aA"
   },
   "tags": ["hb", "party"],
   "author": "df191215-1f3c-407d-96b2-390bdfae1961"
@@ -42,7 +42,7 @@ Content-Type: {{contentType}}
 {
   "content": {
     "title": "Мой др 33",
-    "url": "https://youtu.be/ss9uvs0ujef"
+    "url": "https://www.youtube.com/watch?v=JU79n3yU1aA"
   },
   "author": "df191215-1f3c-407d-96b2-390bdfae1961"
 }

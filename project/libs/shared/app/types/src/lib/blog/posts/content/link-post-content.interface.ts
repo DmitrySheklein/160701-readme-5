@@ -7,7 +7,7 @@ import { PostContentValidator } from '@project/validation';
 export class LinkPostContent extends BasePostContent {
   @ApiProperty({
     description: 'Valid url link',
-    example: 'https://youtu.be/s9v9wv9sv',
+    example: 'https://link.com/acaca',
   })
   @Expose()
   @IsUrl()

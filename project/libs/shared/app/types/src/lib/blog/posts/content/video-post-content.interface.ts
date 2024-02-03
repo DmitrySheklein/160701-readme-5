@@ -7,7 +7,7 @@ import { PostContentValidator } from '@project/validation';
 export class VideoPostContent extends BasePostContent {
   @ApiProperty({
     description: 'Video title',
-    example: 'Lorem ipsum',
+    example: 'Lorem ipsum dolor sit amet. Suscipit, est?',
   })
   @Expose()
   @IsString()
@@ -17,7 +17,7 @@ export class VideoPostContent extends BasePostContent {
 
   @ApiProperty({
     description: 'Valid url link',
-    example: 'https://youtu.be/s9v9wv9sv',
+    example: 'https://www.youtube.com/watch?v=JU79n3yU1aA',
   })
   @Expose()
   @Matches(PostContentValidator.video.url.Matches)

@@ -4,8 +4,10 @@ import {
   PostContent,
   PostType,
   RefPostContentArray,
+  PostTypeContent,
 } from '@project/libs/shared/app/types';
 import { Post } from '@project/validation';
+import { Type } from 'class-transformer';
 
 import {
   ArrayMaxSize,
@@ -53,7 +55,11 @@ export class CreatePostDto {
     oneOf: RefPostContentArray,
   })
   @IsNotEmpty()
-  @ValidateNested({ each: true })
   @ValidateNested()
+  @Type((opts) => {
+    const type: PostType = opts?.object.type;
+
+    return PostTypeContent[type];
+  })
   public content!: PostContent;
 }
