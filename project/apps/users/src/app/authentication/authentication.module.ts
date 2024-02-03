@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthenticationController } from './authentication.controller';
 import { AuthenticationService } from './authentication.service';
 import { BlogUserModule } from '../blog-user/blog-user.module';
-import { JwtCofigModule } from '@project/config/users';
+import { JwtConfigModule } from '@project/config/users';
 import { JwtAccessStrategy } from './strategies/jwt-access.strategy';
 import { NotifyModule } from '../notify/notify.module';
 import { LocalStrategy } from './strategies/local.strategy';
@@ -14,7 +14,7 @@ import { RefreshTokenModule } from '../refresh-token/refresh-token.module';
     RefreshTokenModule,
     BlogUserModule,
     NotifyModule,
-    JwtCofigModule.register(),
+    JwtConfigModule.register(),
   ],
   controllers: [AuthenticationController],
   providers: [

@@ -6,10 +6,10 @@ import { getJwtOptions } from './get-jwt-options';
 export const JWT_ACCESS_KEY = 'jwtAccessToken';
 export const JWT_REFRESH_KEY = 'jwtRefreshToken';
 
-export class JwtCofigModule {
+export class JwtConfigModule {
   static register(): DynamicModule {
     return {
-      module: JwtCofigModule,
+      module: JwtConfigModule,
       providers: [
         {
           provide: JWT_ACCESS_KEY,
