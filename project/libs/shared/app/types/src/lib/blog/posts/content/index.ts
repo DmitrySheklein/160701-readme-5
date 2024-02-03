@@ -4,21 +4,22 @@ import { PhotoPostContent } from './photo-post-content.interface';
 import { QuotePostContent } from './quote-post-content.interface';
 import { TextPostContent } from './text-post-content.interface';
 import { VideoPostContent } from './video-post-content.interface';
+import { PostType } from '../post-type.enum';
 
 export const AllPostContentArray = [
-  LinkPostContent,
+  VideoPostContent,
   PhotoPostContent,
   QuotePostContent,
   TextPostContent,
-  VideoPostContent,
+  LinkPostContent,
 ];
 
 export type PostContent =
+  | VideoPostContent
   | LinkPostContent
   | PhotoPostContent
   | QuotePostContent
-  | TextPostContent
-  | VideoPostContent;
+  | TextPostContent;
 
 export const RefPostContentArray = AllPostContentArray.map((PostTypeClass) => ({
   $ref: getSchemaPath(PostTypeClass),
@@ -37,3 +38,11 @@ export const RefOptionalPostContentArray = AllOptionPostContentArray.map(
     $ref: getSchemaPath(PostTypeClass),
   })
 );
+
+export const PostTypeContent = {
+  [PostType.Video]: VideoPostContent,
+  [PostType.Text]: TextPostContent,
+  [PostType.Quote]: QuotePostContent,
+  [PostType.Link]: LinkPostContent,
+  [PostType.Photo]: PhotoPostContent,
+};
