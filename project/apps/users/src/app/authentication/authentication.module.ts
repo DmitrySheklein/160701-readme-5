@@ -8,7 +8,7 @@ import { NotifyModule } from '../notify/notify.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
 import { RefreshTokenModule } from '../refresh-token/refresh-token.module';
-import { HashModule } from '../hash/hash.module';
+import { HashService } from '../hash/hash.service';
 
 @Module({
   imports: [
@@ -16,7 +16,6 @@ import { HashModule } from '../hash/hash.module';
     BlogUserModule,
     NotifyModule,
     JwtConfigModule.register(),
-    HashModule,
   ],
   controllers: [AuthenticationController],
   providers: [
@@ -24,6 +23,7 @@ import { HashModule } from '../hash/hash.module';
     JwtAccessStrategy,
     LocalStrategy,
     JwtRefreshStrategy,
+    HashService,
   ],
 })
 export class AuthenticationModule {}
