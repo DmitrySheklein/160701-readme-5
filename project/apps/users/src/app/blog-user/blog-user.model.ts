@@ -6,6 +6,8 @@ import { User } from '@project/validation';
 @Schema({
   collection: 'users',
   timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
 })
 export class BlogUserModel extends Document implements AuthUser {
   @Prop({
