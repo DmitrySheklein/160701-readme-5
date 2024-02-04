@@ -1,6 +1,6 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { DynamicModule } from '@nestjs/common';
 import { FetchDataService } from './fetch-data.service';
-import { HttpService } from '@nestjs/axios';
+import { HttpModule } from '@nestjs/axios';
 
 export type FetchDataModuleOptions = {
   baseUrl: string;
@@ -10,8 +10,9 @@ export const FETCH_DATA_OPTIONS = Symbol('FETCH_DATA_OPTIONS');
 export class FetchDataModule {
   static register(options: FetchDataModuleOptions): DynamicModule {
     return {
+      global: true,
       module: FetchDataModule,
-      imports: [HttpService],
+      imports: [HttpModule],
       providers: [
         // Регистрируем объект настроек в
         // качестве провайдера. Значением

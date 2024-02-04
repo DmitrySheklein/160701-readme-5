@@ -4,6 +4,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Param,
   Patch,
   Post,
   Req,
@@ -33,13 +34,14 @@ import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
 
 import { RequestWithUser } from '../blog-user/request-with-user.interface';
 import { RequestWithTokenPayload } from '@project/libs/shared/app/types';
+import { FetchDataService } from '../fetch-data.service';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthenticationController {
   constructor(
     private readonly authService: AuthenticationService,
-    private readonly fetchService: FetchDataService
+    private readonly fetchService: FetchDataService,
     private readonly notifyService: NotifyService
   ) {}
 
@@ -183,10 +185,16 @@ export class AuthenticationController {
     return user;
   }
 
-
   @Get('/fetch')
   public async getPosts() {
     const { data } = await this.fetchService.fetch('/posts');
+
+    return data;
+  }
+
+  @Get('/fetch/:id')
+  public async getPostsId(@Param('id') id: string) {
+    const { data } = await this.fetchService.fetch(`/posts/${id}`);
 
     return data;
   }
