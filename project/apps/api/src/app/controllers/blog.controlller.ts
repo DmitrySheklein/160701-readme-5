@@ -13,7 +13,7 @@ import { CreatePostDto } from '@project/dto';
 import { CheckAuthGuard } from '../guards/check-auth.guard';
 import { UserIdInterceptor } from '../interceptors/userid.interceptor';
 import { AuthKeyName, fillDto } from '@project/shared/helpers';
-import { UploadedFileRdo, PostRdo, UserRdo } from '@project/rdo';
+import { UploadedFileRdo, UserRdo } from '@project/rdo';
 import { ApiService } from '../service/api.service';
 import {
   ApiBearerAuth,
@@ -21,6 +21,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { PostRdo } from '../rdo/post.rdo';
 
 @ApiTags('posts')
 @Controller('posts')
