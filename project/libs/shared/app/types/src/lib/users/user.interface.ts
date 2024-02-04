@@ -7,6 +7,4 @@ export interface User {
   avatar?: string | null;
   role: UserRole;
   createdAt?: Date;
-  publicationsCount?: number;
-  subscribersCount?: number;
 }

@@ -11,6 +11,7 @@ export class BlogUserEntity implements AuthUser, Entity<string> {
   public createdAt?: Date;
   public publicationsCount?: number;
   public subscribersCount?: number;
+  public subscribers?: string[];
 
   constructor(user: AuthUser) {
     this.populate(user);
@@ -27,6 +28,7 @@ export class BlogUserEntity implements AuthUser, Entity<string> {
       createdAt: this.createdAt,
       publicationsCount: this.publicationsCount,
       subscribersCount: this.subscribersCount,
+      subscribers: this.subscribers,
     };
   }
 
@@ -39,6 +41,7 @@ export class BlogUserEntity implements AuthUser, Entity<string> {
     this.createdAt = data.createdAt;
     this.publicationsCount = data.publicationsCount;
     this.subscribersCount = data.subscribersCount;
+    this.subscribers = data.subscribers;
     this.passwordHash = data.passwordHash;
 
     return this;

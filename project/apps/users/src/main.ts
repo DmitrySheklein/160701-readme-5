@@ -22,6 +22,7 @@ async function bootstrap() {
       .setDescription('Users service API')
       .setVersion('1.0')
       .addTag('auth', 'Авторизация и Регистрация')
+      .addTag('subscribers', 'Подписки')
       .addBearerAuth(
         {
           name: 'Authorization',

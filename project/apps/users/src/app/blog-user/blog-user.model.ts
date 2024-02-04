@@ -48,6 +48,12 @@ export class BlogUserModel extends Document implements AuthUser {
   subscribersCount!: number;
 
   @Prop({
+    type: () => [String],
+    default: [],
+  })
+  subscribers!: string[];
+
+  @Prop({
     type: Number,
     default: 0,
   })
