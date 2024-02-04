@@ -28,8 +28,7 @@ Content-Type: {{contentType}}
   "author": "df191215-1f3c-407d-96b2-390bdfae1961"
 }
 
-### Получить данные контента
-GET  {{host}}/{{parentPath}}/content/{{CONTENT_ID}}?postType=video HTTP/1.1
+
 ### Получить все посты
 GET  {{host}}/{{parentPath}} HTTP/1.1
 
