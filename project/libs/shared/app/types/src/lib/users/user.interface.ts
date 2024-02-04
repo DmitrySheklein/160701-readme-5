@@ -4,7 +4,7 @@ export interface User {
   id?: string;
   email: string;
   firstname: string;
-  avatar?: string;
+  avatar?: string | null;
   role: UserRole;
   createdAt?: Date;
   publicationsCount?: number;

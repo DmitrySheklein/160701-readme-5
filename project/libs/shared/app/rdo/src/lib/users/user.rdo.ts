@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { User } from '@project/libs/shared/app/types';
-import { Expose } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
 
 export class UserRdo implements Omit<User, 'role'> {
   @Expose()
@@ -15,7 +15,8 @@ export class UserRdo implements Omit<User, 'role'> {
     description: 'User avatar path',
     example: '/images/user.png',
   })
-  public avatar!: string;
+  @Transform(({ value }) => (value === undefined ? null : value))
+  public avatar!: string | null;
 
   @Expose()
   @ApiProperty({
