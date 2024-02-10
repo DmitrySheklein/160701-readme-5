@@ -56,7 +56,7 @@
       }
     },
     {
-      "plugin": "@nx/eslint/plugin",
+      "plugin": "@nx/eslint",
       "options": {
         "targetName": "lint"
       }
