@@ -45,3 +45,6 @@ Thumbs.db
 
 # Files
 */uploads/*
+
+# Next.js
+.next
