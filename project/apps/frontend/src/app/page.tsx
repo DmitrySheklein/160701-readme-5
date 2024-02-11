@@ -19,9 +19,7 @@ export default async function Index() {
                 height="32"
               />
             </a>
-            <p className="header__topic page__header-topic">
-              micro blogging
-            </p>
+            <p className="header__topic page__header-topic">micro blogging</p>
           </div>
           <div className="header__nav-wrapper">
             <nav className="header__nav">
@@ -78,7 +76,7 @@ export default async function Index() {
               </li>
             </ul>
           </section>
-          <section className="authorization">
+          <section className="authorization" hidden>
             <h2 className="visually-hidden">Авторизация</h2>
             <form className="authorization__form form" action="#" method="post">
               <div className="authorization__input-wrapper form__input-wrapper">
@@ -124,13 +122,9 @@ export default async function Index() {
               </button>
             </form>
           </section>
-          <section className="authorization" hidden>
+          <section className="authorization">
             <h2 className="visually-hidden">Авторизация</h2>
-            <form
-              className="authorization__form form"
-              action="#"
-              method="post"
-            >
+            <form className="authorization__form form" action="#" method="post">
               <div className="authorization__input-wrapper form__input-wrapper">
                 <input
                   className="authorization__input authorization__input--login form__input"
@@ -157,14 +151,9 @@ export default async function Index() {
                   <use xlinkHref="#icon-input-password"></use>
                 </svg>
                 <label className="visually-hidden">Пароль</label>
-                <span className="form__error-label">
-                  Пароли не совпадают
-                </span>
+                <span className="form__error-label">Пароли не совпадают</span>
               </div>
-              <Link
-                className="authorization__recovery"
-                href="auth/recovery"
-              >
+              <Link className="authorization__recovery" href="/auth/recovery">
                 Восстановить пароль
               </Link>
               <button

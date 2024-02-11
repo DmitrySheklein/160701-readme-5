@@ -1,5 +1,6 @@
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
+import { Icons } from '../../components/Icons/Icons';
 
 export default function MainLayout({
   children,
@@ -13,6 +14,7 @@ export default function MainLayout({
         <div className="container">{children}</div>
       </main>
       <Footer />
+      <Icons />
     </>
   );
 }
