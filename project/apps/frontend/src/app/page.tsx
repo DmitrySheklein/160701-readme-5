@@ -45,10 +45,10 @@ export default async function Index() {
         <div className="page__main-wrapper page__main-wrapper--intro container">
           <section className="intro">
             <h2 className="visually-hidden">Наши преимущества</h2>
-            {/* <b className="intro__slogan">
+            <b className="intro__slogan">
               Блог, каким
               <br /> он должен быть
-            </b> */}
+            </b>
             <ul className="intro__advantages-list">
               <li className="intro__advantage">
                 <Image
@@ -169,7 +169,7 @@ export default async function Index() {
           </section>
         </div>
       </main>
-      {/* <Footer isIndex /> */}
+      <Footer isIndex />
       <Icons />
     </div>
   );
