@@ -1,5 +1,4 @@
 import { AppRouter } from '@/shared/consts/AppRouter';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const Header = () => {
@@ -18,7 +17,12 @@ export const Header = () => {
           </Link>
           <p className="header__topic">micro blogging</p>
         </div>
-        <form className="header__search-form form" action="#" method="get">
+        <form
+          className="header__search-form form"
+          action="#"
+          method="get"
+          hidden
+        >
           <div className="header__search">
             <label className="visually-hidden">Поиск</label>
             <input className="header__search-input form__input" type="search" />

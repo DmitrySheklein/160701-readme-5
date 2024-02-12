@@ -1,4 +1,4 @@
-import '../styles/global.css';
+import '@/styles/global.css';
 import { rubik } from './fonts';
 
 export const metadata = {

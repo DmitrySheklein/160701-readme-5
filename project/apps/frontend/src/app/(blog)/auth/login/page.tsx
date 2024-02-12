@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="page__title page__title--login">Вход</h1>
+      <h1 className="page__title">Вход</h1>
 
       <section className="login">
         <h2 className="visually-hidden">Форма авторизации</h2>
@@ -66,7 +66,9 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <Link href={AppRouter.Recovery}></Link>
+          <Link className="login__recovery" href={AppRouter.Recovery}>
+            Восстановить пароль
+          </Link>
           <button className="login__submit button button--main" type="submit">
             Отправить
           </button>

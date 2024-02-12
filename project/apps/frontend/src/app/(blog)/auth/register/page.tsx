@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="page__title page__title--registration">Регистрация</h1>
+      <h1 className="page__title">Регистрация</h1>
 
       <section className="registration">
         <h2 className="visually-hidden">Форма регистрации</h2>

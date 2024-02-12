@@ -311,6 +311,13 @@ img {
   color: #898c98;
   cursor: pointer;
 }
+
+.form__input-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .form__input-section {
   position: relative;
 }
@@ -1540,6 +1547,24 @@ img {
   letter-spacing: 1px;
   font-weight: 500;
 }
+
+.login__recovery {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 7px;
+  font-size: 17px;
+  color: #2e384d;
+  opacity: .3;
+}
+
+.login__recovery:focus,.login__recovery:hover {
+  opacity: .6
+}
+
+.login__recovery:active {
+  opacity: .1
+}
+
 .login__label {
   margin-bottom: 10px;
 }
