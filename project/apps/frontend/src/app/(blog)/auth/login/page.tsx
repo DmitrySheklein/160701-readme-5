@@ -1,4 +1,6 @@
+import { AppRouter } from '@/shared/consts/AppRouter';
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Логин',
@@ -64,6 +66,7 @@ export default function Page() {
               </div>
             </div>
           </div>
+          <Link href={AppRouter.Recovery}></Link>
           <button className="login__submit button button--main" type="submit">
             Отправить
           </button>

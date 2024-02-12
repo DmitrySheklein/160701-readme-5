@@ -1,3 +1,4 @@
+import { AppRouter } from '@/shared/consts/AppRouter';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -64,7 +65,7 @@ export const Header = () => {
               <li className="header__authorization">
                 <Link
                   className="header__user-button  header__authorization-button button"
-                  href="/auth/login"
+                  href={AppRouter.Login}
                 >
                   Вход
                 </Link>
@@ -72,7 +73,7 @@ export const Header = () => {
               <li>
                 <Link
                   className="header__user-button header__register-button button"
-                  href="/auth/register"
+                  href={AppRouter.Register}
                 >
                   Регистрация
                 </Link>

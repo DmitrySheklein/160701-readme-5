@@ -1,5 +1,6 @@
-import { Footer } from '../components/Footer/Footer';
-import { Icons } from '../components/Icons/Icons';
+import { AppRouter } from '@/shared/consts/AppRouter';
+import { Footer } from '@/components/Footer/Footer';
+import { Icons } from '@/components/Icons/Icons';
 // import styles from './page.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,12 +24,11 @@ export default async function Index() {
           </div>
           <div className="header__nav-wrapper">
             <nav className="header__nav">
-              <p className="header__register-slogan">Еще нет аккаунта?</p>
               <ul className="header__user-nav">
                 <li>
                   <Link
                     className="header__user-button header__register-button button button--transparent"
-                    href="/auth/register"
+                    href={AppRouter.Register}
                   >
                     Регистрация
                   </Link>
@@ -153,7 +153,10 @@ export default async function Index() {
                 <label className="visually-hidden">Пароль</label>
                 <span className="form__error-label">Пароли не совпадают</span>
               </div>
-              <Link className="authorization__recovery" href="/auth/recovery">
+              <Link
+                className="authorization__recovery"
+                href={AppRouter.Recovery}
+              >
                 Восстановить пароль
               </Link>
               <button
