@@ -67,7 +67,7 @@ export default function Page() {
             </div>
           </div>
           <Link className="login__recovery" href={AppRouter.Recovery}>
-            Восстановить пароль
+            Забыли пароль?
           </Link>
           <button className="login__submit button button--main" type="submit">
             Отправить

@@ -1,5 +1,6 @@
 import { AppRouter } from '@/shared/consts/AppRouter';
 import Link from 'next/link';
+import { CabinetNav } from '../CabinetNav/CabinetNav';
 
 export const Header = () => {
   return (
@@ -36,35 +37,7 @@ export const Header = () => {
         </form>
         <div className="header__nav-wrapper">
           <nav className="header__nav">
-            <ul className="header__my-nav">
-              <li className="header__my-page header__my-page--popular">
-                <a
-                  className="header__page-link"
-                  href="popular.html"
-                  title="Популярный контент"
-                >
-                  <span className="visually-hidden">Популярный контент</span>
-                </a>
-              </li>
-              <li className="header__my-page header__my-page--feed">
-                <a
-                  className="header__page-link"
-                  href="feed.html"
-                  title="Моя лента"
-                >
-                  <span className="visually-hidden">Моя лента</span>
-                </a>
-              </li>
-              <li className="header__my-page header__my-page--messages">
-                <a
-                  className="header__page-link"
-                  href="messages.html"
-                  title="Личные сообщения"
-                >
-                  <span className="visually-hidden">Личные сообщения</span>
-                </a>
-              </li>
-            </ul>
+            {/* <CabinetNav /> */}
             <ul className="header__user-nav">
               <li className="header__authorization">
                 <Link

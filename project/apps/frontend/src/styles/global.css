@@ -14,8 +14,10 @@ html {
   color: #2e384d;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+html {
+  overflow-y: scroll;
 }
 body {
   display: flex;
@@ -904,7 +906,9 @@ img {
   margin-right: 0;
 }
 .header__page-link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
   background-repeat: no-repeat;

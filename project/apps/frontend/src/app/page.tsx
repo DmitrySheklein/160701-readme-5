@@ -45,10 +45,10 @@ export default async function Index() {
         <div className="page__main-wrapper page__main-wrapper--intro container">
           <section className="intro">
             <h2 className="visually-hidden">Наши преимущества</h2>
-            <b className="intro__slogan">
+            {/* <b className="intro__slogan">
               Блог, каким
               <br /> он должен быть
-            </b>
+            </b> */}
             <ul className="intro__advantages-list">
               <li className="intro__advantage">
                 <Image
@@ -112,7 +112,7 @@ export default async function Index() {
                 <span className="form__error-label">Пароли не совпадают</span>
               </div>
               <a className="authorization__recovery" href="#">
-                Восстановить пароль
+                Забыли пароль?
               </a>
               <button
                 className="authorization__submit button button--main"
@@ -157,7 +157,7 @@ export default async function Index() {
                 className="authorization__recovery"
                 href={AppRouter.Recovery}
               >
-                Восстановить пароль
+                Забыли пароль?
               </Link>
               <button
                 className="authorization__submit button button--main"
@@ -169,7 +169,7 @@ export default async function Index() {
           </section>
         </div>
       </main>
-      <Footer isIndex />
+      {/* <Footer isIndex /> */}
       <Icons />
     </div>
   );
