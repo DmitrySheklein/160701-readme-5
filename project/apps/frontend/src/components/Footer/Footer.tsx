@@ -14,7 +14,7 @@ export const Footer = ({ isIndex }: FooterProps) => {
       <div className="footer__wrapper">
         <div className="footer__container container">
           <div className="footer__site-info">
-            <div className="footer__site-nav">
+            <div className="footer__site-nav" hidden>
               <ul className="footer__info-pages">
                 <li className="footer__info-page">
                   <a className="footer__page-link" href="#">
@@ -56,7 +56,7 @@ export const Footer = ({ isIndex }: FooterProps) => {
             </p>
           </div>
           <div className="footer__my-info">
-            <ul className="footer__my-pages">
+            <ul className="footer__my-pages" hidden>
               <li className="footer__my-page footer__my-page--feed">
                 <a className="footer__page-link" href="feed.html">
                   Моя лента
