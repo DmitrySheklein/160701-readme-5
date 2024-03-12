@@ -11,5 +11,6 @@ coverage
 *.log
 
 # next.js
+/.next
 /.next/
 /out/
